@@ -61,7 +61,7 @@ The final output includes a two-tabbed dashboard:
 1. **Country Overview**: Trend lines of total units and revenue per country by month
 2. **Customer Forecast**: Forecast trend (ARIMA, regression, ensemble) for individual customers
 
-> [🔗 Tableau Public Link](https://public.tableau.com/app/profile/YOUR_PROFILE)
+> [🔗 Tableau Public Link](https://public.tableau.com/app/profile/noelle.diederich)
 
 ---
 
@@ -96,6 +96,6 @@ python scripts/export_marts_to_csv.py
 
 ## 🙋‍♀️ Author
 Noelle Diederich  
-[LinkedIn Profile](https://www.linkedin.com/in/YOUR-LINK)  
-[Tableau Public](https://public.tableau.com/app/profile/YOUR_PROFILE)
+[LinkedIn Profile](https://www.linkedin.com/in/noelle-diederich)  
+[Tableau Public](https://public.tableau.com/app/profile/noelle.diederich)
 
