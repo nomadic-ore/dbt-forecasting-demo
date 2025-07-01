@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: audit_invalid_online_retail
+    description: >
+      Lists rows from raw_online_retail that were excluded in staging due to:
+      - missing customer_id
+      - invalid quantity or unit price
+    columns:
+      - name: issue_type
+        description: "Reason the row was excluded"
+      - name: num_rows
+        description: "Number of rows that failed this condition"
+
+  - name: audit_valid_online_retail
+    description: >
+      Shows valid transactions by invoice date and country,
+      based on staging filter rules.
+    columns:
+      - name: invoice_date
+        description: "The date of the transaction"
+      - name: country
+        description: "Customer's country"
+      - name: valid_transactions
+        description: "Count of valid sales transactions"
+      - name: total_revenue
+        description: "Sum of revenue (quantity * price)"

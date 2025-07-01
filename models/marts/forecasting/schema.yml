@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: fcst_monthly_sales
+    description: >
+      Monthly-level revenue and order fact table, grouped by country,
+      for use in forecasting and trend analysis.
+    columns:
+      - name: month
+        description: "The month of the transaction (YYYY-MM)"
+      - name: country
+        description: "The customer's country"
+      - name: num_orders
+        description: "Number of distinct invoices/orders"
+      - name: num_customers
+        description: "Number of distinct customers ordering"
+      - name: total_revenue
+        description: "Sum of revenue (quantity × price)"
+      - name: total_units
+        description: "Total units sold"
