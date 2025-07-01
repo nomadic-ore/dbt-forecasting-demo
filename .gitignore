@@ -2,3 +2,41 @@
 target/
 dbt_packages/
 logs/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Output files
+output/
+*.png
+*.html
+
+# SQLite / DuckDB
+*.db
+*.duckdb
+
+# VSCode / PyCharm
+.vscode/
+.idea/
+
+# dbt artifacts
+dbt_modules/
+target/
+dbt_packages/
+logs/
+manifest.json
+run_results.json
+
+# OS files
+.DS_Store
+Thumbs.db
