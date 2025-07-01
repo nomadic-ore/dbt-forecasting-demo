@@ -1,7 +1,7 @@
 -- models/audit/audit_valid_online_retail.sql
 
 with raw as (
-    select * from raw_online_retail
+    select *, "InvoiceDate"::DATE as invoice_date from raw_online_retail
 ),
 
 valid as (
@@ -15,7 +15,7 @@ valid as (
 
 aggregated as (
     select
-        date("InvoiceDate") as invoice_date,
+        invoice_date,
         "Country" as country,
         count(*) as valid_transactions,
         sum(Quantity * Price) as total_revenue
