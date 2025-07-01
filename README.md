@@ -1,6 +1,8 @@
 # 🧠 dbt Forecasting Demo with Python + Tableau
 
-This project demonstrates an end-to-end forecasting pipeline combining **dbt**, **Python**, and **Tableau**. It showcases demand forecasting using customer sales data and produces both customer-level and country-level forecasts, visualized in Tableau and Matplotlib.
+This project demonstrates an end-to-end forecasting pipeline combining **dbt**, **Python**, and **Tableau**. It showcases demand forecasting using customer sales data and produces both customer-level and country-level forecasts, visualized in Tableau and Matplotlib.  
+
+This project emphasizes learning and integration over polish. The Tableau dashboard is included to illustrate how outputs from dbt and Python can be consumed by business intelligence tools. Enhancements to interactivity and design are possible, but were not the primary focus in this iteration.
 
 ## 📊 Project Overview
 
@@ -13,13 +15,16 @@ This project demonstrates an end-to-end forecasting pipeline combining **dbt**, 
   - `Tableau` for interactive dashboards
   - `scikit-learn`, `statsmodels` for ML models (ARIMA + linear regression)
 
+---
+
 ## 🔧 Project Structure
+
 ```
 dbt_forecasting_demo/
 │
 ├── data/                            # CSV input + output files
   ├── forecast_quantity_ensemble.csv
-  ├── fct_monthly_sales.csv
+  └── fct_monthly_sales.csv
 │  
 ├── models/                          # dbt models (staging, marts, audits)
   ├── marts/
@@ -27,7 +32,7 @@ dbt_forecasting_demo/
   ├── fct_monthly_sales.sql
   ├── fct_quantity_by_customer_sql
 │ 
-├── scripts/                        # Python scripts for modeling & charts
+├── scripts/                        # Python scripts
 │ ├── forecast_quantity_ensemble.py
 │ ├── forecast_customer_charts.py
 │ ├── visualize_fct_monthly_sales.py
@@ -39,28 +44,41 @@ dbt_forecasting_demo/
 │
 ├── tableau_dbt_fcst_demo1.twb      # Tableau workbook file
 ├── dbt.duckdb                      # DuckDB database file
+├── requirements.txt                # Python dependencies
+├── .gitignore                      # Git exclusions
+├── LICENSE.md                      # MIT License
 ├── dbt_project.yml                 # dbt project config
 └── README.md                       # Project documentation
 ```
 
 ---
 
+
+---
+
 ## 🔄 Workflow Overview
 
-### Step 1: Data Load & Modeling
-- `scripts/load_csvs_to_duckdb.py`: Loads raw retail CSV data into DuckDB
-- `dbt build`: Runs models to create marts like:
-  - `fct_quantity_by_customer`
-  - `fcst_monthly_sales`
+### Step 1: Load & Model Data
+- Run `scripts/load_csvs_to_duckdb.py` to ingest the dataset into DuckDB
+- Run dbt models:
+  ```bash
+  dbt build
 
 ### Step 2: Forecasting
-- `scripts/forecast_quantity_ensemble.py`: Creates forecasts using ARIMA & Linear Regression
-- `scripts/validate_forecast_accuracy.py`: Merges actuals and forecasts, computes MAE
+- Run ARIMA + Linear Regression ensemble:
+  ```bash
+  python scripts/forecast_quantity_ensemble.py
+- Optional: Validate accuracy vs. actuals
+  ```bash
+  python scripts/validate_forecast_accuracy.py
 
-### Step 3: Export & Visualize
-- `scripts/export_marts_to_csv.py`: Writes dbt mart outputs to CSV for Tableau
-- `scripts/visualize_fct_monthly_sales.py`: Generates country-level forecast trends
-- `scripts/forecast_customer_charts.py`: Plots top customer forecasts
+### Step 3: Export Visuals
+- Country-level plots::
+  ```bash
+  python scripts/visualize_fct_monthly_sales.py
+- Top customer forecasts
+  ```bash
+  python scripts/forecast_customer_charts.py
 
 ---
 
@@ -74,44 +92,35 @@ Includes:
 - **Customer View**: Forecasted quantity per customer using ARIMA & Regression
 ---
 
-## 🧰 Tech Stack
-- **Python**: pandas, matplotlib, statsmodels, scikit-learn
-- **dbt**: data modeling & transformations
-- **DuckDB**: local analytical database
-- **Tableau Public**: dashboard visualization
-
----
 
 ## ✅ Setup Instructions
-1. Clone the repo:
+1. Clone & Set Up Environment
 ```bash
-   git clone https://github.com/nomadic-ore/dbt-forecasting-demo.git
-   cd dbt-forecasting-demo
-```
-
-2. Create & Activate Virtual Environment, including Dependencies:
-```bash
+git clone https://github.com/your-username/dbt_forecasting_demo.git
+cd dbt_forecasting_demo
 python -m venv .venv
-source .venv/bin/activate  # For Mac/Linux
-# OR
-.venv\Scripts\activate     # For Windows
-```
-```bash
+.venv\Scripts\activate  # (or use source .venv/bin/activate for Mac/Linux)
 pip install -r requirements.txt
 ```
-
-3. Initialize dbt & Run Models.
+2. Run dbt Models
 ```bash
-dbt deps      # if using any packages
-dbt build     # runs staging and mart models into DuckDB
+dbt build
 ```
-4. Run Python Forecasting & Visualization (/output/forecast_charts, /output/country_trends).
+
+3. Run Forecast & Visualizations
 ```bash
 python scripts/forecast_quantity_ensemble.py
 python scripts/forecast_customer_charts.py
 python scripts/visualize_fct_monthly_sales.py
 ```
-5.  Open Tableau and point to the CSV files in the /data/folder (fct_monthly_sales.csv, forecast_quantity_ensemble.csv)
+5.  Open Tableau
+- Open tableau_dbt_fcst_demo1.twb
+- Point to data/fct_monthly_sales.csv and forecast_quantity_ensemble.csv
+---
+
+## 🔐 License
+- Licensed under the MIT License
+
 ---
 
 ## 🙋‍♀️ Author
